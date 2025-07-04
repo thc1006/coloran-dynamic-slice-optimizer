@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red.svg)](#)
 
-## 🎯 Overview
+## Overview
 
 This project implements a **GPU-accelerated optimization system** for dynamic resource allocation in 5G network slicing. Using the **ColO-RAN dataset** with over 35 million records, we achieve **99.97% prediction accuracy** and **5.7% average efficiency improvement** through advanced machine learning and metaheuristic optimization.
 
@@ -21,7 +21,7 @@ This project implements a **GPU-accelerated optimization system** for dynamic re
 - 📈 **Comprehensive Analysis**: 15 engineered features + 6-chart visualization
 - ⚡ **Real-time Performance**: Sub-second allocation decisions
 
-## 🏗️ Architecture
+## 🏗Architecture
 
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
@@ -37,7 +37,7 @@ This project implements a **GPU-accelerated optimization system** for dynamic re
 └─────────────────┘    └──────────────────┘    └─────────────────┘
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -76,20 +76,7 @@ results = allocator.optimize_allocation(models, method="genetic")
 print(f"Efficiency improvement: {results['avg_improvement']:.4f}")
 ```
 
-## 📊 Performance Results
-
-| Metric | Random Forest | Neural Network |
-|--------|---------------|----------------|
-| **R² Score** | 0.999758 | 0.999572 |
-| **MAE** | 0.000568 | 0.001302 |
-| **Training Time** | 46.4s | 148.6s |
-
-| Algorithm | Steps | Avg. Improvement | Max Improvement |
-|-----------|-------|------------------|-----------------|
-| **Exhaustive** | 40 | 5.70% | 8.47% |
-| **Genetic** | 60 | 4.91% | - |
-
-## 🔬 Technical Details
+## Technical Details
 
 ### Feature Engineering (15 Features)
 - **Resource Utilization**: `prb_utilization`, `sum_requested_prbs`, `sum_granted_prbs`
@@ -110,7 +97,7 @@ print(f"Efficiency improvement: {results['avg_improvement']:.4f}")
 - **Base Stations**: 7 locations
 - **Memory Usage**: 40GB+ → 1.5GB (optimized)
 
-## 📈 Experimental Results
+## Experimental Results
 
 Our system achieves significant improvements in network slice efficiency:
 
@@ -119,7 +106,7 @@ Our system achieves significant improvements in network slice efficiency:
 - **Sub-second optimization** for real-time applications
 - **Scalable to 35M+ data points** with GPU acceleration
 
-## 🛠️ Development
+## 🛠Development
 
 ### Running Tests
 ```
@@ -136,14 +123,14 @@ python experiments/run_experiment.py --config configs/custom.yaml
 jupyter notebook experiments/notebooks/full_experiment.ipynb
 ```
 
-## 📚 Documentation
+## Documentation
 
 - [Installation Guide](docs/installation.md)
 - [Usage Tutorial](docs/usage.md)  
 - [API Reference](docs/api_reference.md)
 - [Experimental Setup](docs/experiments.md)
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
@@ -156,24 +143,23 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 - [ ] 🔄 Predictive traffic forecasting
 - [ ] 🛡️ Security and privacy mechanisms
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **ColO-RAN Dataset**: [Colosseum Open RAN Dataset](https://github.com/wineslab/colosseum-oran-coloran-dataset)
 - **NVIDIA**: A100 GPU computing support
 - **cuML**: GPU-accelerated machine learning
 - **TensorFlow**: Neural network framework
 
-## 📞 Contact
+## Contact
 
-- **Author**: [Your Name]
-- **Email**: your.email@domain.com
-- **Project**: https://github.com/yourusername/coloran-dynamic-slice-optimizer
+- **Author**: Hsiu-Chi Tsai(thc1006)
+- **Email**: hctsai@linux.com
 
-## 📊 Citation
+## Citation
 
 If you use this work in your research, please cite:
 

@@ -6,9 +6,9 @@ updates:
     schedule:
       interval: "weekly"
     assignees:
-      - "yourusername"
+      - "thc1006"
     reviewers:
-      - "yourusername"
+      - "thc1006"
     open-pull-requests-limit: 10
   
   # GitHub Actions

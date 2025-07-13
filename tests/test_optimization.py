@@ -25,20 +25,19 @@ def mock_allocator(mock_predictor):
     return allocator_obj
 
 def test_exhaustive_optimizer(mock_allocator):
-    from src.optimization.exhaustive_search import ExhaustiveOptimizer
+    from src.optimization.exhaustive_search import exhaustive_optimizer
     
-    def evaluate(state, allocations):
-        matrix = mock_allocator._get_feature_matrix(state, allocations)
-        preds = mock_allocator._predict_efficiency(matrix)
-        return preds.reshape(len(allocations), 3).mean(axis=1)
+    # This mock evaluation function is simplified.
+    # It returns the sum of products of allocation and some weights.
+    def mock_evaluator(allocations):
+        weights = np.array([0.2, 0.5, 0.3])
+        return np.dot(np.array(allocations), weights)
 
-    optimizer = ExhaustiveOptimizer(evaluate, total_rbgs=17)
-    state = {'sum_requested_prbs': 10, 'num_ues': 10} # dummy state
+    # We expect the optimizer to find the allocation that maximizes the dot product.
+    # For total_rbgs=5, allocations are like [1,1,3], [1,2,2], [1,3,1], [2,1,2], [2,2,1], [3,1,1]
+    # Scores: 1.6, 1.7, 2.0, 1.5, 1.6, 1.4. Max is 2.0 at [1,3,1]
+    best_alloc, best_score = exhaustive_optimizer(mock_evaluator, total_rbgs=5)
     
-    best_alloc, best_efficiency = optimizer.run(state)
-    
-    assert sum(best_alloc) == 17
-    # With our mock, higher RBG sum should be better, but the mean balances it.
-    # The key is that it returns a valid allocation.
-    assert all(x >= 1 for x in best_alloc)
+    assert best_alloc == [1, 3, 1]
+    assert best_score == pytest.approx(2.0)
 

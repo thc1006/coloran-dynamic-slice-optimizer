@@ -1,0 +1,27 @@
+# Core Libraries
+pandas>=1.5.0
+numpy>=1.23.0
+scikit-learn>=1.2.0
+tensorflow-cpu
+
+# Data & Files
+pyarrow>=10.0.0
+joblib>=1.2.0
+openpyxl
+
+# Utilities
+psutil>=5.9.0
+tqdm>=4.60.0
+
+# Visualization
+matplotlib>=3.6.0
+seaborn>=0.12.0
+
+# For Testing
+pytest>=7.0.0
+pytest-cov
+flake8
+black
+isort
+safety
+bandit

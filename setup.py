@@ -19,7 +19,20 @@ setup(
         'Topic :: System :: Networking',
     ],
     python_requires='>=3.8',
-    install_requires=open('requirements.txt').read().splitlines(),
+    install_requires=[
+        'pandas>=1.5.0',
+        'numpy>=1.23.0',
+        'scikit-learn>=1.2.0',
+        'tensorflow-cpu',
+        'pyarrow>=10.0.0',
+        'joblib>=1.2.0',
+        'openpyxl',
+        'psutil>=5.9.0',
+        'tqdm>=4.60.0',
+        'matplotlib>=3.6.0',
+        'seaborn>=0.12.0',
+        'pytest>=7.0.0',
+    ],
     entry_points={
         'console_scripts': [
             'run-5g-slice-experiment=experiments.run_experiment:main',

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coloran-optimizer-blue
+  labels:
+    app: coloran-optimizer
+    version: blue
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: coloran-optimizer
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: coloran-optimizer
+        version: blue
+    spec:
+      containers:
+      - name: coloran-optimizer
+        image: your-docker-registry/coloran-optimizer:latest-blue # Replace with your image
+        ports:
+        - containerPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coloran-optimizer-green
+  labels:
+    app: coloran-optimizer
+    version: green
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: coloran-optimizer
+      version: green
+  template:
+    metadata:
+      labels:
+        app: coloran-optimizer
+        version: green
+    spec:
+      containers:
+      - name: coloran-optimizer
+        image: your-docker-registry/coloran-optimizer:latest-green # Replace with your image
+        ports:
+        - containerPort: 8000

@@ -1,0 +1,94 @@
+# Grafana Dashboard for visualizing application and infrastructure metrics
+
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  labels:
+    app: grafana
+  name: coloran-optimizer-dashboard
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  json: |
+    {
+      "apiVersion": 1,
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+          }
+        ]
+      },
+      "editable": true,
+      "gnetId": null,
+      "graphTooltip": 1,
+      "id": null,
+      "links": [],
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 0
+          },
+          "id": 2,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "limit": null
+            },
+            "textMode": "auto"
+          },
+          "pluginVizId": "stat",
+          "targets": [
+            {
+              "datasource": "Prometheus",
+              "editorMode": "builder",
+              "expr": "sum(rate(http_requests_total{app=\"coloran-optimizer\"}[5m]))",
+              "legendFormat": "HTTP Requests per Second",
+              "refId": "A"
+            }
+          ],
+          "title": "HTTP Requests per Second",
+          "type": "stat"
+        }
+      ],
+      "schemaVersion": 30,
+      "style": "dark",
+      "tags": [],
+      "templating": {
+        "list": []
+      },
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "browser",
+      "title": "ColO-RAN Optimizer Dashboard",
+      "uid": "coloran-optimizer-dashboard",
+      "version": 1
+    }

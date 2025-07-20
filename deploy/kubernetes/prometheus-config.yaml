@@ -1,0 +1,18 @@
+# Prometheus configuration for monitoring Kubernetes cluster and application metrics
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: coloran-optimizer-monitor
+  labels:
+    app: coloran-optimizer
+spec:
+  selector:
+    matchLabels:
+      app: coloran-optimizer
+  endpoints:
+  - port: http-metrics # Assuming your application exposes metrics on this port
+    path: /metrics
+  namespaceSelector:
+    matchNames:
+    - default # Or your application's namespace

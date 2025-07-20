@@ -1,5 +1,4 @@
-# coloran-dynamic-slice-optimizer
-
+# ColO-RAN Dynamic Slice Optimizer
 
 > GPU-accelerated dynamic resource allocation optimization for 5G network slicing using machine learning and metaheuristic algorithms
 
@@ -21,60 +20,62 @@ This project implements a **GPU-accelerated optimization system** for dynamic re
 - 📈 **Comprehensive Analysis**: 15 engineered features + 6-chart visualization
 - ⚡ **Real-time Performance**: Sub-second allocation decisions
 
-## 🏗Architecture
+## 🏗 Architecture
+
+For a detailed overview of the system architecture, data flow, and integration points, please refer to the [Architecture Documentation](docs/architecture.md).
+
+## Project Structure
 
 ```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   ColO-RAN      │ →  │ Feature          │ →  │ ML Models       │
-│   Dataset       │    │ Engineering      │    │ (RF + NN)       │
-│ (35M+ records)  │    │ (15 features)    │    │ (99.97% R²)     │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-                                 ↓
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│ Visualization   │ ←  │ Results          │ ←  │ Optimization    │
-│ & Reporting     │    │ Analysis         │    │ (Exhaustive+GA) │
-│ (6 charts)      │    │                  │    │ (5.7% improve.) │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
+coloran-dynamic-slice-optimizer/
+├── README.md                          # Complete project overview
+├── CONTRIBUTING.md                    # Development guidelines
+├── CHANGELOG.md                       # Version history
+├── LICENSE                           # Open source license
+├── pyproject.toml                    # Modern Python packaging
+├── requirements.txt                  # Pinned production dependencies
+├── requirements-dev.txt              # Development dependencies
+├── docker-compose.yml                # Multi-service deployment
+├── .github/
+│   ├── workflows/                   # GitHub Actions workflows
+│   └── ISSUE_TEMPLATE.md            # Issue reporting template
+├── docs/                            # Project documentation
+├── src/                             # Source code
+│   └── coloran_optimizer/           # Main application package
+├── tests/                           # Comprehensive test suite
+├── experiments/                     # Experiment configurations, notebooks, and results
+├── deploy/                          # Deployment files (Docker, Kubernetes, Terraform)
+└── scripts/                         # Utility scripts
 ```
 
 ## Quick Start
 
 ### Prerequisites
 
-- Python 3.8+
-- NVIDIA GPU with CUDA 11.0+
+- Docker and Docker Compose
+- NVIDIA GPU with CUDA 11.0+ (for GPU acceleration)
 - 16GB+ GPU memory (recommended: A100)
 
-### Installation
+### Installation & Running with Docker Compose
 
-```
-git clone https://github.com/yourusername/coloran-dynamic-slice-optimizer.git
-cd coloran-dynamic-slice-optimizer
-pip install -r requirements.txt
-```
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/thc1006/coloran-dynamic-slice-optimizer.git
+    cd coloran-dynamic-slice-optimizer
+    ```
+2.  **Build and run the services:**
+    ```bash
+    docker-compose up --build
+    ```
+    This will start the FastAPI application, Kafka, and Zookeeper.
 
-### Basic Usage
+### Basic Usage (within Docker)
 
-```
-from src.data import ColoRANDataLoader, MemoryOptimizedProcessor
-from src.models import A100OptimizedTrainer
-from src.optimization import SliceResourceAllocator
+Once the services are running, the FastAPI application will be accessible at `http://localhost:8000`.
+You can interact with the API to send network data for optimization.
 
-# 1. Load and process data
-loader = ColoRANDataLoader("./data/")
-processor = MemoryOptimizedProcessor(batch_size=75000)
-data = processor.process_data_in_batches(loader.load_raw_data())
-
-# 2. Train models
-trainer = A100OptimizedTrainer()
-models = trainer.train_models(data)
-
-# 3. Optimize allocation
-allocator = SliceResourceAllocator(total_rbgs=17)
-results = allocator.optimize_allocation(models, method="genetic")
-
-print(f"Efficiency improvement: {results['avg_improvement']:.4f}")
-```
+For example, to access the API documentation:
+`http://localhost:8000/docs`
 
 ## Technical Details
 
@@ -106,29 +107,30 @@ Our system achieves significant improvements in network slice efficiency:
 - **Sub-second optimization** for real-time applications
 - **Scalable to 35M+ data points** with GPU acceleration
 
-## 🛠Development
+## 🛠 Development
 
 ### Running Tests
-```
-pytest tests/ -v
+```bash
+pytest tests/
 ```
 
 ### Training Custom Models
-```
+```bash
 python experiments/run_experiment.py --config configs/custom.yaml
 ```
 
 ### Reproducing Results
-```
+```bash
 jupyter notebook experiments/notebooks/full_experiment.ipynb
 ```
 
 ## Documentation
 
-- [Installation Guide](docs/installation.md)
-- [Usage Tutorial](docs/usage.md)  
-- [API Reference](docs/api_reference.md)
-- [Experimental Setup](docs/experiments.md)
+- [API Documentation](docs/api/)
+- [Architecture Documentation](docs/architecture.md)
+- [Deployment Guide](docs/deployment.md)
+- [Developer Guide](docs/development.md)
+- [User Guide](docs/user-guide.md)
 
 ## Contributing
 
@@ -136,12 +138,12 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ### Development Roadmap
 
-- [ ] 🤖 Deep Reinforcement Learning integration (DQN, A3C)
-- [ ] 🌐 Multi-cell coordination optimization
-- [ ] ⚡ Real-time QoS constraint handling
-- [ ] 📈 6G network scenario extension
-- [ ] 🔄 Predictive traffic forecasting
-- [ ] 🛡️ Security and privacy mechanisms
+This project is being developed in phases:
+
+- **Phase 1 (Foundation)**: GPU-accelerated ML pipeline, basic optimization algorithms, initial documentation, comprehensive test suite, security basics.
+- **Phase 2 (Enhancement)**: Deep Reinforcement Learning integration, real-time streaming data processing, multi-dataset validation, advanced optimization algorithms.
+- **Phase 3 (Production)**: Security and privacy mechanisms, horizontal scaling with Kubernetes, production monitoring and alerting.
+- **Phase 4 (Research Extension)**: 6G network scenario extension, federated learning, edge computing integration, predictive traffic forecasting.
 
 ## License
 
@@ -156,7 +158,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-- **Author**: Hsiu-Chi Tsai(thc1006)
+- **Author**: Hsiu-Chi Tsai (thc1006)
 - **Email**: hctsai@linux.com
 
 ## Citation
@@ -166,13 +168,12 @@ If you use this work in your research, please cite:
 ```
 @software{coloran-dynamic-slice-optimizer,
   title={coloran-dynamic-slice-optimizer: GPU-Accelerated Dynamic Resource Allocation},
-  author={Your Name},
+  author={Hsiu-Chi Tsai},
   year={2025},
-  url={https://github.com/yourusername/coloran-dynamic-slice-optimizer}
+  url={https://github.com/thc1006/coloran-dynamic-slice-optimizer}
 }
 ```
 
 ---
 
 ⭐ **Star this repository** if you find it useful!
-

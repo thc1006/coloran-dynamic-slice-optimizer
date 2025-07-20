@@ -1,0 +1,44 @@
+[project]
+name = "coloran-dynamic-slice-optimizer"
+version = "0.1.0"
+description = "GPU-accelerated optimization system for dynamic resource allocation in 5G network slicing."
+authors = [
+    { name = "Your Name", email = "your.email@example.com" }
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "cudf",
+    "cuml",
+    "tensorflow",
+    "fastapi",
+    "uvicorn",
+    "loguru",
+    "pyjwt",
+    "diffprivlib",
+    "pydantic",
+    "mlflow",
+    "kafka-python",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+license = { file = "LICENSE" }
+keywords = ["5G", "O-RAN", "network slicing", "GPU", "optimization", "machine learning"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Telecommunications",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

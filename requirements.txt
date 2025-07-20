@@ -7,8 +7,8 @@ scikit-learn>=1.2.0
 # GPU Acceleration
 tensorflow==2.12.0
 # For NVIDIA Ampere architecture (e.g., A100), use CUDA 11.x compatible versions
-# cuml-cu11>=23.04.0
-# cupy-cuda11x>=11.0.0
+cuml-cu11>=23.04.0
+cupy-cuda11x>=11.0.0
 
 # Data & Files
 pyarrow>=10.0.0

@@ -1,0 +1,36 @@
+data:
+  base_path: /content
+  batch_size: 75000
+  quality_threshold: 70.0
+  random_seed: 42
+  validation_split: 0.2
+logging:
+  file_path: ./logs/coloran.log
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  level: INFO
+model:
+  dropout_rate: 0.3
+  nn_hidden_layers:
+  - 256
+  - 128
+  - 64
+  rf_max_depth: 16
+  rf_n_estimators: 300
+  save_path: ./models
+optimization:
+  genetic_generations: 15
+  genetic_population_size: 80
+  timeout_seconds: 600
+  total_rbgs: 17
+security:
+  api_rate_limit: 100
+  input_validation: true
+  jwt_secret: ${COLORAN_JWT_SECRET}
+training:
+  batch_size: 4096
+  early_stopping_patience: 15
+  epochs: 100
+  learning_rate_patience: 5
+  mixed_precision: true
+  sample_size: 5000000
+  use_gpu: true

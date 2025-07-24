@@ -1,0 +1,62 @@
+{
+  "timestamp": "2025-07-24T10:23:17.656706",
+  "training_summary": {
+    "samples": 15000,
+    "features": 12,
+    "ml_performance": {
+      "r2": 0.9989744656120523,
+      "mae": 0.0018836648491114536,
+      "mse": 1.587949900099866e-05,
+      "rmse": 0.003984908907490692
+    },
+    "optimization_performance": {
+      "scenario_results": [
+        {
+          "scenario": "Morning Rush Hour",
+          "exhaustive_efficiency": 0.7145159272352855,
+          "genetic_efficiency": 0.7144052239259086,
+          "best_efficiency": 0.7145159272352855
+        },
+        {
+          "scenario": "Evening Peak",
+          "exhaustive_efficiency": 0.6680970287322999,
+          "genetic_efficiency": 0.6679862467447917,
+          "best_efficiency": 0.6680970287322999
+        },
+        {
+          "scenario": "Late Night Low Load",
+          "exhaustive_efficiency": 0.8934608035352496,
+          "genetic_efficiency": 0.8919484439161088,
+          "best_efficiency": 0.8934608035352496
+        },
+        {
+          "scenario": "Weekend Afternoon",
+          "exhaustive_efficiency": 0.7862484085559845,
+          "genetic_efficiency": 0.78602081656456,
+          "best_efficiency": 0.7862484085559845
+        }
+      ],
+      "simulation_stats": {
+        "steps": 50,
+        "avg_improvement": -0.0028109938025474546,
+        "max_improvement": 0.0002673085530598973,
+        "min_improvement": -0.020781585243013323
+      }
+    },
+    "integration_results": {
+      "model_loading": true,
+      "prediction_test": 0.7660884022712707,
+      "config_integration": true,
+      "allocation_test": [
+        3,
+        5,
+        9
+      ]
+    }
+  },
+  "assessment": {
+    "model_performance": "EXCELLENT",
+    "optimization_performance": "GOOD",
+    "overall_status": "EXCELLENT"
+  }
+}

@@ -1,0 +1,8 @@
+data:
+  base_path: ./data
+  batch_size: 10000
+logging:
+  level: DEBUG
+training:
+  epochs: 10
+  sample_size: 100000
